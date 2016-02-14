@@ -38,6 +38,7 @@ public class InsetsDispatcherHelper {
         a.recycle();
 
         mView = view;
+        mView.setFitsSystemWindows(true);
     }
 
     public void onAddView() {
