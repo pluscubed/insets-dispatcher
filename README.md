@@ -76,10 +76,13 @@ These attributes must be applied under this package's namespace - i.e. `xmlns:ap
 ```
 This would apply the top inset as a padding to the `LinearLayout`.
 
+####Custom dispatcher layouts
+Reference any of the pre-made dispatcher layouts in the `view` package. All business code has already been separated into the helper classes, so all you need to do is call the correct callbacks.
+
 ### License
 
 ```
-Copyright 2015 Daniel Ciao
+Copyright 2016 Daniel Ciao
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
