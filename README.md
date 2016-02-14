@@ -1,4 +1,5 @@
-# Insets Dispatcher
+![Icon](./icon.png)Insets Dispatcher
+===================
 
 [![Release](https://jitpack.io/v/com.pluscubed/insets-dispatcher.svg)](https://jitpack.io/#com.pluscubed/insets-dispatcher)  [![License](https://img.shields.io/github/license/pluscubed/insets-dispatcher.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
