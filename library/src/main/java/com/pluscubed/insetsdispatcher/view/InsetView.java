@@ -7,36 +7,37 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
-import android.widget.FrameLayout;
 
-import com.pluscubed.insetsdispatcher.InsetsDispatcherViewGroup;
+import com.pluscubed.insetsdispatcher.InsetsDispatchReceiver;
+import com.pluscubed.insetsdispatcher.R;
 
 /**
- * This view sets it's width/height automatically to the left, top, right or bottom inset. Can be used to draw i.E. a color under the status/navigation bar on KitKat.
- * Doesn't need to be placed inside an InsetsDispatcherLayout.
+ * This view sets its width/height automatically to the left, top, right or bottom inset. Can be used to draw e.g. a color under the status/navigation bar on KitKat.
  */
-public class InsetLayout extends FrameLayout implements InsetsDispatcherViewGroup {
-    private final int windowInset;
+public class InsetView extends View implements InsetsDispatchReceiver {
 
-    public InsetLayout(Context context) {
+    private final int mWindowInset;
+
+    public InsetView(Context context) {
         this(context, null, 0);
     }
 
-    public InsetLayout(Context context, AttributeSet attrs) {
+    public InsetView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public InsetLayout(Context context, AttributeSet attrs, int defStyle) {
+    public InsetView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
-                com.pluscubed.windowinsetsdispatcher.R.styleable.InsetLayout,
+                R.styleable.InsetView,
                 0, 0);
 
-        windowInset = a.getInt(com.pluscubed.windowinsetsdispatcher.R.styleable.InsetLayout_windowInset, -1);
+        mWindowInset = a.getInt(R.styleable.InsetView_windowInset, -1);
 
         a.recycle();
     }
@@ -79,9 +80,9 @@ public class InsetLayout extends FrameLayout implements InsetsDispatcherViewGrou
     }
 
     private void setInsets(Rect insets) {
-        if (insets == null || windowInset == -1) return;
+        if (insets == null || mWindowInset == -1) return;
         final ViewGroup.LayoutParams lp = getLayoutParams();
-        switch (windowInset) {
+        switch (mWindowInset) {
             case 0:
                 lp.width = insets.left;
             case 1:

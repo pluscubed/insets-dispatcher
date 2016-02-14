@@ -2,6 +2,6 @@ package com.pluscubed.insetsdispatcher;
 
 import android.graphics.Rect;
 
-public interface InsetsDispatcherViewGroup {
+public interface InsetsDispatchReceiver {
     void dispatchFitSystemWindows(Rect insets);
 }

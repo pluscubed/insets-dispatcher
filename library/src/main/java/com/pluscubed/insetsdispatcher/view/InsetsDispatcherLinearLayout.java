@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.widget.LinearLayout;
 
+import com.pluscubed.insetsdispatcher.InsetsDispatchReceiver;
 import com.pluscubed.insetsdispatcher.InsetsDispatcherHelper;
 import com.pluscubed.insetsdispatcher.InsetsDispatcherLayoutParams;
 import com.pluscubed.insetsdispatcher.InsetsDispatcherLayoutParamsHelper;
-import com.pluscubed.insetsdispatcher.InsetsDispatcherViewGroup;
 
-public class InsetsDispatcherLinearLayout extends LinearLayout implements InsetsDispatcherViewGroup {
+public class InsetsDispatcherLinearLayout extends LinearLayout implements InsetsDispatchReceiver {
 
     private InsetsDispatcherHelper mHelper;
 

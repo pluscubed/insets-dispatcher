@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
 
-import com.pluscubed.windowinsetsdispatcher.R;
-
 public class InsetsDispatcherHelper {
 
     public static final int FLAG_INSETS_TOP = 0x1;
@@ -64,7 +62,7 @@ public class InsetsDispatcherHelper {
         for (int i = 0; i < mView.getChildCount(); i++) {
             final View child = mView.getChildAt(i);
 
-            if (!(child instanceof InsetsDispatcherViewGroup)) {
+            if (!(child instanceof InsetsDispatchReceiver)) {
                 InsetsDispatcherLayoutParamsHelper helper = ((InsetsDispatcherLayoutParams) child.getLayoutParams()).getHelper();
                 applyInsets(mInsets, child, helper.insetsTop, helper.insetsBottom, helper.insetsUseMargin);
             }
@@ -87,8 +85,8 @@ public class InsetsDispatcherHelper {
         for (int i = 0; i < mView.getChildCount(); i++) {
             final View child = mView.getChildAt(i);
 
-            if (child instanceof InsetsDispatcherViewGroup) {
-                ((InsetsDispatcherViewGroup) child).dispatchFitSystemWindows(insets);
+            if (child instanceof InsetsDispatchReceiver) {
+                ((InsetsDispatchReceiver) child).dispatchFitSystemWindows(insets);
             } else {
                 InsetsDispatcherLayoutParamsHelper helper = ((InsetsDispatcherLayoutParams) child.getLayoutParams()).getHelper();
                 applyInsets(mInsets, child, helper.insetsTop, helper.insetsBottom, helper.insetsUseMargin);

@@ -16,7 +16,7 @@
         <attr name="windowInsetsUseMargin" format="boolean" />
     </declare-styleable>
 
-    <declare-styleable name="InsetLayout">
+    <declare-styleable name="InsetView">
         <attr name="windowInset">
             <enum name="left" value="0" />
             <enum name="top" value="1" />

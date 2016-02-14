@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
-import com.pluscubed.windowinsetsdispatcher.R;
-
 public class InsetsDispatcherLayoutParamsHelper {
 
     public boolean insetsTop;
