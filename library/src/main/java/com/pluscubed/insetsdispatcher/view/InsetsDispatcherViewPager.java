@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
 
+import com.pluscubed.insetsdispatcher.InsetsDispatchReceiver;
 import com.pluscubed.insetsdispatcher.InsetsDispatcherHelper;
 import com.pluscubed.insetsdispatcher.InsetsDispatcherLayoutParams;
 import com.pluscubed.insetsdispatcher.InsetsDispatcherLayoutParamsHelper;
-import com.pluscubed.insetsdispatcher.InsetsDispatcherViewGroup;
 
-public class InsetsDispatcherViewPager extends ViewPager implements InsetsDispatcherViewGroup {
+public class InsetsDispatcherViewPager extends ViewPager implements InsetsDispatchReceiver {
 
     private InsetsDispatcherHelper mHelper;
 
