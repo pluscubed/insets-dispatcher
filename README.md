@@ -24,7 +24,7 @@ Add this to your module's `build.gradle` file:
 ```Gradle
 dependencies {
 	...
-	compile 'com.github.pluscubed:insets-dispatcher:{latest-version}'
+	compile 'com.pluscubed:insets-dispatcher:{latest-version}'
 }
 ```
 
