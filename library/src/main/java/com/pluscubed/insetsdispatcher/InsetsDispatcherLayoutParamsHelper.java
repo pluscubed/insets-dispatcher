@@ -6,8 +6,10 @@ import android.util.AttributeSet;
 
 public class InsetsDispatcherLayoutParamsHelper {
 
-    public boolean insetsTop;
-    public boolean insetsBottom;
+    public boolean useLeftInset;
+    public boolean useTopInset;
+    public boolean useRightInset;
+    public boolean useBottomInset;
     public boolean insetsUseMargin;
 
     public InsetsDispatcherLayoutParamsHelper(Context c, AttributeSet attrs) {
@@ -21,8 +23,10 @@ public class InsetsDispatcherLayoutParamsHelper {
                 0, 0);
 
         int insetsFlags = a.getInt(R.styleable.WindowInsetsLayout_Layout_layout_windowInsets, 0);
-        insetsTop = (insetsFlags & InsetsDispatcherHelper.FLAG_INSETS_TOP) == InsetsDispatcherHelper.FLAG_INSETS_TOP;
-        insetsBottom = (insetsFlags & InsetsDispatcherHelper.FLAG_INSETS_BOTTOM) == InsetsDispatcherHelper.FLAG_INSETS_BOTTOM;
+        useLeftInset = (insetsFlags & InsetsDispatcherHelper.FLAG_INSETS_LEFT) == InsetsDispatcherHelper.FLAG_INSETS_LEFT;
+        useTopInset = (insetsFlags & InsetsDispatcherHelper.FLAG_INSETS_TOP) == InsetsDispatcherHelper.FLAG_INSETS_TOP;
+        useRightInset = (insetsFlags & InsetsDispatcherHelper.FLAG_INSETS_RIGHT) == InsetsDispatcherHelper.FLAG_INSETS_RIGHT;
+        useBottomInset = (insetsFlags & InsetsDispatcherHelper.FLAG_INSETS_BOTTOM) == InsetsDispatcherHelper.FLAG_INSETS_BOTTOM;
         insetsUseMargin = a.getBoolean(R.styleable.WindowInsetsLayout_Layout_layout_windowInsetsUseMargin, false);
 
         a.recycle();

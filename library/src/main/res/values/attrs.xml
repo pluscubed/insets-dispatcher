@@ -2,16 +2,20 @@
 <resources>
     <declare-styleable name="WindowInsetsLayout_Layout">
         <attr name="layout_windowInsets">
-            <flag name="top" value="0x1" />
-            <flag name="bottom" value="0x2" />
+            <flag name="left" value="0x1" />
+            <flag name="top" value="0x2" />
+            <flag name="right" value="0x3" />
+            <flag name="bottom" value="0x4" />
         </attr>
         <attr name="layout_windowInsetsUseMargin" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="WindowInsetsLayout">
         <attr name="windowInsets">
-            <flag name="top" value="0x1" />
-            <flag name="bottom" value="0x2" />
+            <flag name="left" value="0x1" />
+            <flag name="top" value="0x2" />
+            <flag name="right" value="0x3" />
+            <flag name="bottom" value="0x4" />
         </attr>
         <attr name="windowInsetsUseMargin" format="boolean" />
     </declare-styleable>
