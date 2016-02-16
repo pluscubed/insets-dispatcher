@@ -33,7 +33,7 @@ The library is versioned according to [Semantic Versioning](http://semver.org/).
 
 ### Usage
 
-The InsetsDispatcher layouts take the window insets and set the padding/margin of child views according to layout attributes. It uses window insets on 5.0+ and insets given by `fitsSystemWindows` on 4.x.
+The InsetsDispatcher layouts use window insets to set the padding/margin of child views according to layout attributes. It uses window insets on 5.0+ and `fitsSystemWindows` insets on 4.x. The insets are added to the existing padding/margin of the View (Note: the information is saved in view tags, so those will be overridden).
 
 On 4.x, no other views can have `fitsSystemWindows="true"` because they would consume the insets. Ideally the dispatcher layout would be the root layout, and dispatcher layouts would be nested until the view that needs insets applied is reached.
 
