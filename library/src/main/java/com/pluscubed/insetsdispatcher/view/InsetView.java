@@ -85,12 +85,16 @@ public class InsetView extends View implements InsetsDispatchReceiver {
         switch (mWindowInset) {
             case 0:
                 lp.width = insets.left;
+                break;
             case 1:
                 lp.height = insets.top;
+                break;
             case 2:
                 lp.width = insets.right;
+                break;
             case 3:
                 lp.height = insets.bottom;
+                break;
         }
         setLayoutParams(lp);
         ViewCompat.postInvalidateOnAnimation(this);
