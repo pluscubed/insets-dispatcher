@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
@@ -97,6 +98,7 @@ public class InsetsDispatcherViewPager extends ViewPager implements InsetsDispat
             super();
         }
 
+        @Nullable
         @Override
         public InsetsDispatcherLayoutParamsHelper getHelper() {
             return mHelper;

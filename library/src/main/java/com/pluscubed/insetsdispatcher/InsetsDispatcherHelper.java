@@ -69,7 +69,11 @@ public class InsetsDispatcherHelper {
 
             if (!(child instanceof InsetsDispatchReceiver)) {
                 InsetsDispatcherLayoutParamsHelper helper = ((InsetsDispatcherLayoutParams) child.getLayoutParams()).getHelper();
-                applyInsets(mInsets, child, helper.useLeftInset, helper.useTopInset, helper.useRightInset, helper.useBottomInset, helper.insetsUseMargin);
+                if (helper != null) {
+                    applyInsets(mInsets, child, helper.useLeftInset, helper.useTopInset, helper.useRightInset, helper.useBottomInset, helper.insetsUseMargin);
+                } else {
+                    applyInsets(mInsets, child, false, false, false, false, false);
+                }
             }
         }
 
@@ -92,7 +96,11 @@ public class InsetsDispatcherHelper {
                 ((InsetsDispatchReceiver) child).dispatchFitSystemWindows(insets);
             } else {
                 InsetsDispatcherLayoutParamsHelper helper = ((InsetsDispatcherLayoutParams) child.getLayoutParams()).getHelper();
-                applyInsets(mInsets, child, helper.useLeftInset, helper.useTopInset, helper.useRightInset, helper.useBottomInset, helper.insetsUseMargin);
+                if (helper != null) {
+                    applyInsets(mInsets, child, helper.useLeftInset, helper.useTopInset, helper.useRightInset, helper.useBottomInset, helper.insetsUseMargin);
+                } else {
+                    applyInsets(mInsets, child, false, false, false, false, false);
+                }
             }
         }
 

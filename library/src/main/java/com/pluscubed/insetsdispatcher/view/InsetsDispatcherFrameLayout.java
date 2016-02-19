@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,6 +108,7 @@ public class InsetsDispatcherFrameLayout extends FrameLayout implements InsetsDi
             super(width, height);
         }
 
+        @Nullable
         @Override
         public InsetsDispatcherLayoutParamsHelper getHelper() {
             return mHelper;
