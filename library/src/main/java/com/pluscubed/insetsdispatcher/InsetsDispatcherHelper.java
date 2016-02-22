@@ -110,6 +110,10 @@ public class InsetsDispatcherHelper {
     }
 
     private void applyInsets(@Nullable Rect insets, @NonNull final View view, final boolean useLeft, final boolean useTop, final boolean useRight, final boolean useBottom, final boolean useMargin) {
+        if (!useLeft && !useRight && !useTop && !useBottom) {
+            return;
+        }
+
         if (insets == null) {
             insets = new Rect();
         }
@@ -128,39 +132,43 @@ public class InsetsDispatcherHelper {
         int right = useMargin ? marginLp.rightMargin : view.getPaddingRight();
         int bottom = useMargin ? marginLp.bottomMargin : view.getPaddingBottom();
 
-        InsetInfo insetInfo = null;
-        if (view.getTag() != null && view.getTag() instanceof InsetInfo) {
-            insetInfo = (InsetInfo) view.getTag();
+        InsetInfo previousInsets = null;
+        if (view.getTag() != null) {
+            if (view.getTag() instanceof InsetInfo) {
+                previousInsets = (InsetInfo) view.getTag();
+            } else {
+                throw new RuntimeException("setTag() must not be called on a View using Insets Dispatcher");
+            }
         }
 
         if (useLeft) {
-            if (insetInfo != null) {
+            if (previousInsets != null) {
                 // remove the previous margin/padding first
-                left -= useMargin ? insetInfo.marginInsets.left : insetInfo.paddingInsets.left;
+                left -= useMargin ? previousInsets.marginInsets.left : previousInsets.paddingInsets.left;
             }
             left += insets.left;
         }
 
         if (useTop) {
-            if (insetInfo != null) {
+            if (previousInsets != null) {
                 // remove the previous margin/padding first
-                top -= useMargin ? insetInfo.marginInsets.top : insetInfo.paddingInsets.top;
+                top -= useMargin ? previousInsets.marginInsets.top : previousInsets.paddingInsets.top;
             }
             top += insets.top;
         }
 
         if (useRight) {
-            if (insetInfo != null) {
+            if (previousInsets != null) {
                 // remove the previous margin/padding first
-                right -= useMargin ? insetInfo.marginInsets.right : insetInfo.paddingInsets.right;
+                right -= useMargin ? previousInsets.marginInsets.right : previousInsets.paddingInsets.right;
             }
             right += insets.right;
         }
 
         if (useBottom) {
-            if (insetInfo != null) {
+            if (previousInsets != null) {
                 // remove the previous margin/padding first
-                bottom -= useMargin ? insetInfo.marginInsets.bottom : insetInfo.paddingInsets.bottom;
+                bottom -= useMargin ? previousInsets.marginInsets.bottom : previousInsets.paddingInsets.bottom;
             }
             bottom += insets.bottom;
         }
@@ -175,16 +183,16 @@ public class InsetsDispatcherHelper {
             view.setPadding(left, top, right, bottom);
         }
 
-        if (insetInfo == null) {
-            insetInfo = useMargin ? new InsetInfo(new Rect(), insets) : new InsetInfo(insets, new Rect());
+        if (previousInsets == null) {
+            previousInsets = useMargin ? new InsetInfo(new Rect(), insets) : new InsetInfo(insets, new Rect());
         } else {
             if (useMargin) {
-                insetInfo.marginInsets = insets;
+                previousInsets.marginInsets = insets;
             } else {
-                insetInfo.paddingInsets = insets;
+                previousInsets.paddingInsets = insets;
             }
         }
-        view.setTag(insetInfo);
+        view.setTag(previousInsets);
     }
 
     private static class InsetInfo {
