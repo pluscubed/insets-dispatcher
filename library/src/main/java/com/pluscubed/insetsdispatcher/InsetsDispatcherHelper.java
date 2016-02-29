@@ -64,10 +64,6 @@ public class InsetsDispatcherHelper {
                     insets.getSystemWindowInsetRight(), insets.getSystemWindowInsetBottom());
         }
 
-        if (mInsets == null) {
-            return null;
-        }
-
         for (int i = 0; i < mView.getChildCount(); i++) {
             final View child = mView.getChildAt(i);
 
@@ -91,10 +87,6 @@ public class InsetsDispatcherHelper {
     public void onFitSystemWindows(@Nullable Rect insets) {
         if (insets != null) {
             mInsets = insets;
-        }
-
-        if (mInsets == null) {
-            return;
         }
 
         for (int i = 0; i < mView.getChildCount(); i++) {
